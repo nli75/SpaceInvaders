@@ -15,14 +15,6 @@ public abstract class EntityPic extends Entity {
 		this.bitmap = bitmap;
 		this.rectangle = new Rect(0, 0, getBitmapWidth(), getBitmapHeight());
 	}
-	
-	public int getBitmapWidth(){
-		return this.bitmap.getWidth();
-	}
-	
-	public int getBitmapHeight(){
-		return this.bitmap.getHeight();
-	}
 
 	//Rita ut på skärmen
 	@Override
@@ -31,7 +23,19 @@ public abstract class EntityPic extends Entity {
 		canvas.drawBitmap(this.bitmap, rectangle, destinationRect, null);
 	}
 	
-	public void updateAnimation(){
-		
+	public int getCenterX() {
+		return getxPos() - getBitmapWidth()/2;
+	}
+	
+	public void setCenterX(int x) {
+		setxPos(x - getBitmapWidth()/2);
+	}
+	
+	public int getBitmapWidth() {
+		return bitmap.getWidth();
+	}
+	
+	public int getBitmapHeight() {
+		return bitmap.getHeight();
 	}
 }

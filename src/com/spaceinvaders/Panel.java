@@ -11,9 +11,9 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 	private Monster monster;
 	private Ship ship;
 	//private LaserBeam laserBeam;
-	private static int screenWidth;
-	private static int screenHeight;
 	private GameThread gamethread;
+	public static int screenWidth;
+	public static int screenHeight;
 
 	public Panel(Context c, int screenWidht, int screenHeight) {
 		super(c);

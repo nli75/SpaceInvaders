@@ -1,5 +1,7 @@
 package com.spaceinvaders;
 
+import com.spaceinvaders.EntityManager;
+
 import android.graphics.Canvas;
 
 public abstract class Entity {
@@ -7,32 +9,44 @@ public abstract class Entity {
 	private int xPos;
 	private int yPos;
 	
-	public Entity(int x, int y){
+	public Entity(int x, int y) {
 		this.setxPos(x);
 		this.setyPos(y);
+		EntityManager.INSTANCE.addEntity(this);
 	}
-
-	public int getxPos() {
-		return xPos;
+	
+	public void movement(int deltaX, int deltaY) {
+		setxPos(getxPos() + deltaX);
+		setyPos(getyPos() + deltaY);
 	}
-
-	public void setxPos(int xPos) {
-		this.xPos = xPos;
-	}
-
-	public int getyPos() {
-		return yPos;
-	}
-
-	public void setyPos(int yPos) {
-		this.yPos = yPos;
-	}
-	//Rita ut på skärmen
-	public void onDraw(Canvas canvas){
+	
+	public void updatePosition() {
 		
 	}
 	
-	public void updatePosition(){
+	public void collision() {
 		
 	}
+	
+	public void directionRadian() {
+		
+	}
+	
+	public void onDraw(Canvas canvas) {
+		
+	}
+	
+	public int getxPos() {
+		return xPos;
+	}
+	public void setxPos(int xPos) {
+		this.xPos = xPos;
+	}
+	public int getyPos() {
+		return yPos;
+	}
+	public void setyPos(int yPos) {
+		this.yPos = yPos;
+	}
+	
 }
