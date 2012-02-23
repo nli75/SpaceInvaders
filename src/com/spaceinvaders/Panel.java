@@ -3,6 +3,7 @@ package com.spaceinvaders;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -24,11 +25,23 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		Bitmap monsterBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.monster2);
 		Bitmap shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 		
-		
 		monster 		= new Monster(this.screenWidth /2, 50, monsterBitmap);
 		ship			= new Ship(this.screenHeight, this.screenHeight -20, shipBitmap);
 	}
 
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		int eventX = (int) event.getX();
+		int eventAction = event.getAction();
+		
+		switch(eventAction) {
+			case MotionEvent.ACTION_MOVE:
+				ship.setCenterX(eventX);
+				break;
+		}
+		return true;
+	}
+	
 	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
 		// TODO Auto-generated method stub
 		
