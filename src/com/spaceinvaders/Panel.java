@@ -13,6 +13,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 	//private LaserBeam laserBeam;
 	private static int screenWidth;
 	private static int screenHeight;
+	private GameThread gamethread;
 
 	public Panel(Context c, int screenWidht, int screenHeight) {
 		super(c);
@@ -34,7 +35,9 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 	}
 
 	public void surfaceCreated(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
+		gamethread = new GameThread(getHolder());
+		gamethread.setRunning(true);
+		gamethread.start();
 		
 	}
 

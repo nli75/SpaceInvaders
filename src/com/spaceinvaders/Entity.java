@@ -1,5 +1,7 @@
 package com.spaceinvaders;
 
+import android.graphics.Canvas;
+
 public abstract class Entity {
 
 	private int xPos;
@@ -24,5 +26,9 @@ public abstract class Entity {
 
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
+	}
+	//Rita ut på skärmen
+	public void onDraw(Canvas canvas){
+		
 	}
 }

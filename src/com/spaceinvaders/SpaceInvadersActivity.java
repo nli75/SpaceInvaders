@@ -14,7 +14,7 @@ public class SpaceInvadersActivity extends Activity {
         int screenWidht = display.getWidth();
         int screenHeight = display.getHeight();
         
-      // Panel panel = new Panel(this, screenWidht, screenHeight);
-       //setContentView(panel);
+        Panel panel = new Panel(this, screenWidht, screenHeight);
+        setContentView(panel);
     }
 }
