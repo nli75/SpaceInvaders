@@ -13,6 +13,15 @@ public abstract class EntityPic extends Entity {
 	public EntityPic(int x, int y, Bitmap bitmap) {
 		super(x, y);
 		this.bitmap = bitmap;
+		this.rectangle = new Rect(0, 0, getBitmapWidth(), getBitmapHeight());
+	}
+
+	private int getBitmapHeight() {
+		return bitmap.getWidth();
+	}
+
+	private int getBitmapWidth() {
+		return bitmap.getHeight();
 	}
 	
 	public int getBitmapWidth(){
