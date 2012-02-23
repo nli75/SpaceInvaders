@@ -26,8 +26,11 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		Bitmap monsterBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
 		Bitmap shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 		Bitmap laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
+		//monster 		= new Monster(this.screenWidth+50, 100, monsterBitmap);
+		for (int i = 0; i <= 150; i+=30) {
+			monster 	= new Monster(this.screenWidth+i, 100, monsterBitmap);
+		}
 		
-		monster 		= new Monster(this.screenWidth+50, 100, monsterBitmap);
 		ship			= new Ship(this.screenWidth/2, this.screenHeight-20, shipBitmap);
 		this.shipXPos	= ship.getCenterX();
 		laserBeam		= new LaserBeam(this.screenWidth/2, this.screenHeight-20, laserbeamBitmap);
