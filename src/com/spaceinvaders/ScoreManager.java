@@ -14,7 +14,7 @@ public class ScoreManager {
 	Paint scorePaint = new Paint();
 	
 	private ScoreManager() {
-		score	= 0;
+		score = 0;
 		scorePaint.setColor(Color.WHITE);
 		scorePaint.setTextSize(45);
 		scorePaint.setShadowLayer(5, 0, 0, Color.MAGENTA);

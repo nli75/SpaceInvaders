@@ -16,6 +16,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 	public static int screenWidth;
 	public static int screenHeight;
 	public static int shipXPos;
+	public static Bitmap bg;
 
 	public Panel(Context c, int screenWidht, int screenHeight) {
 		super(c);
@@ -23,6 +24,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		this.screenWidth	= screenWidht;
 		this.screenHeight	= screenHeight;
 		
+		this.bg					= BitmapFactory.decodeResource(getResources(), R.drawable.bg);
 		Bitmap monsterBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
 		Bitmap shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 		Bitmap laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);

@@ -1,6 +1,8 @@
 package com.spaceinvaders;
 
 import com.spaceinvaders.ScoreManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.SurfaceHolder;
@@ -30,7 +32,9 @@ public class GameThread extends Thread {
 				synchronized(surfaceholder){
 					
 					//SKRIV IN ALLT SOM SKA HÄNDA FRÅN INSTANCE
-					canvas.drawColor(Color.BLACK);
+					
+				    canvas.drawColor(Color.BLACK);
+				    canvas.drawBitmap(Panel.bg, 10, 10, null);
 					EntityManager.INSTANCE.drawEntity(canvas);
 					ScoreManager.INSTANCE.updateScore(canvas);
 				}
