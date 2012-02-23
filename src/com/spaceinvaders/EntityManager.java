@@ -8,6 +8,12 @@ public class EntityManager {
 	
 	private ArrayList<Entity> entities;
 	
+	public EntityManager(){
+		this.entities = new ArrayList<Entity>();
+	}
+	
+	public
+	
 	
 
 }
