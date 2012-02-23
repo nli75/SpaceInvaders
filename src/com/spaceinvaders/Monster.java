@@ -29,9 +29,9 @@ public class Monster extends EntityPic {
 	public void updatePosition(){
 		
 		
-		if(getCenterX() > Panel.screenWidth){
+		if(getCenterX() > Panel.screenWidth -10){
 			xMov = - 3;
-		}else if(getCenterX() < 0){
+		}else if(getCenterX() < 10){
 			xMov = 3;
 		}
 		

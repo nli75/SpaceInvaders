@@ -1,6 +1,7 @@
 package com.spaceinvaders;
 
 import android.app.Activity;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.view.Display;
 
@@ -11,8 +12,10 @@ public class SpaceInvadersActivity extends Activity {
         super.onCreate(savedInstanceState);
        
         Display display = getWindowManager().getDefaultDisplay();
-        int screenWidht = display.getWidth();
-        int screenHeight = display.getHeight();
+        Point size = new Point();
+        display.getSize(size);
+        int screenWidht = size.x;
+        int screenHeight = size.y;
         
         Panel panel = new Panel(this, screenWidht, screenHeight);
         setContentView(panel);
