@@ -31,4 +31,8 @@ public abstract class Entity {
 	public void onDraw(Canvas canvas){
 		
 	}
+	
+	public void updatePosition(){
+		
+	}
 }

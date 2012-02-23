@@ -30,6 +30,7 @@ public class GameThread extends Thread {
 					
 					//SKRIV IN ALLT SOM SKA HÄNDA FRÅN INSTANCE
 					canvas.drawColor(Color.BLACK);
+					EntityManager.INSTANCE.drawEntity(canvas);
 					
 				}
 			}finally{
