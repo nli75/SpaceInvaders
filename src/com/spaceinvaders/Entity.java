@@ -1,7 +1,5 @@
 package com.spaceinvaders;
 
-import com.spaceinvaders.EntityManager;
-
 import android.graphics.Canvas;
 
 public abstract class Entity {
@@ -10,8 +8,8 @@ public abstract class Entity {
 	private int yPos;
 	
 	public Entity(int x, int y) {
-		this.setxPos(x);
-		this.setyPos(y);
+		this.xPos = x;
+		this.yPos = y;
 		EntityManager.INSTANCE.addEntity(this);
 	}
 	
