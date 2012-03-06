@@ -53,4 +53,5 @@ public class SpaceInvadersActivity extends Activity {
     	super.onStop();
     	SoundManager.INSTANCE.clean();
     }
+    
 }

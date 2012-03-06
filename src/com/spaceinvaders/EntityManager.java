@@ -59,4 +59,5 @@ public class EntityManager {
 			entity.updateAnimation();
 		}
 	}
+	
 }
