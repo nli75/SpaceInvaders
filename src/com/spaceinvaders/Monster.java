@@ -1,6 +1,5 @@
 package com.spaceinvaders;
 
-import com.spaceinvaders.Panel;
 import android.graphics.Bitmap;
 
 public class Monster extends EntityPic {
@@ -13,10 +12,15 @@ public class Monster extends EntityPic {
 	Bitmap bitmap;
 	
 	public Monster(int x, int y, Bitmap bitmap) {
-		super(x,y, bitmap);
+		super(x,y, bitmap, 1, 1);
 		this.x = x;
 		this.y = y;
 		this.bitmap = bitmap;
+	}
+	
+	@Override
+	public void collision() {
+		
 	}
 	
 	@Override

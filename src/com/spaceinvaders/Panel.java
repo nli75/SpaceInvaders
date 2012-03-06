@@ -12,7 +12,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 	private Monster monster;
 	private Ship ship;
 	private LaserBeam laserBeam;
-	private GameThread gamethread;
+	private GameThread gameThread;
 	public static int screenWidth;
 	public static int screenHeight;
 	public static int shipXPos;
@@ -53,23 +53,30 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		return true;
 	}
 	
-	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
+	public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
 		
 	}
 
-	public void surfaceCreated(SurfaceHolder arg0) {
-		gamethread = new GameThread(getHolder());
-		gamethread.setRunning(true);
-		gamethread.start();
+	public void surfaceCreated(SurfaceHolder holder) {
+		gameThread = new GameThread(getHolder());
+		gameThread.setRunning(true);
+		gameThread.start();
 		
 	}
 
-	public void surfaceDestroyed(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
-		
+	public void surfaceDestroyed(SurfaceHolder holder) {
+		boolean retry = true;
+		gameThread.setRunning(false);
+		while(retry) {
+			try {
+				gameThread.join();
+				retry = false;
+			}
+			catch(InterruptedException e) {
+				
+			}
+		}
 	}
-	
 	
 
 }
