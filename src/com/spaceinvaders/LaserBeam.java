@@ -22,13 +22,16 @@ public class LaserBeam extends EntityPic {
 		setxPos(Panel.shipXPos);
 		setyPos(Panel.screenHeight-20);
 		ScoreManager.INSTANCE.addScore(1);
+		SoundManager.INSTANCE.playSound(2);
 	}
 	
 	@Override
 	public void updatePosition(){
 		if (getyPos() < 0) {
 			setxPos(Panel.shipXPos);
-			setyPos(Panel.screenHeight-20);
+			setyPos(Panel.screenHeight-20);			
+		}else if(getyPos() ==  Panel.screenHeight-20){
+			SoundManager.INSTANCE.playSound(1);
 		}
 		movement(xMov, yMov);
 	}

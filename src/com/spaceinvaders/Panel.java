@@ -3,11 +3,14 @@ package com.spaceinvaders;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-public class Panel extends SurfaceView implements SurfaceHolder.Callback {
+public class Panel extends SurfaceView implements SurfaceHolder.Callback, SensorEventListener {
 
 	private Monster monster;
 	private Ship ship;
@@ -35,7 +38,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 		}
 		
 		ship			= new Ship(this.screenWidth/2, this.screenHeight-20, shipBitmap);
-		this.shipXPos	= ship.getCenterX();
+		Panel.shipXPos	= ship.getCenterX();
 		laserBeam		= new LaserBeam(this.screenWidth/2, this.screenHeight-20, laserbeamBitmap);
 	}
 
@@ -76,6 +79,16 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback {
 				
 			}
 		}
+	}
+
+	public void onAccuracyChanged(Sensor arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onSensorChanged(SensorEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 
