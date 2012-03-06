@@ -22,22 +22,27 @@ public abstract class EntityPic extends Entity {
 		this.frameTicker 	= 1;
 		this.currentFrame 	= 0;
 		sourceRect = new Rect(0, 0, getBitmapWidth(), getBitmapHeight());
+		destinationRect = new Rect(getxPos(), getyPos(), getxPos() + getBitmapWidth(), getyPos() + getBitmapHeight());
+	}
+	
+	@Override
+	public void onDraw(Canvas canvas) {
+		destinationRect = new Rect(getxPos(), getyPos(), getxPos() + getBitmapWidth(), getyPos() + getBitmapHeight());
+		canvas.drawBitmap(bitmap, sourceRect, destinationRect, null);
 	}
 	
 	@Override
 	public void updateAnimation() {
-		currentFrame++;
-		if (currentFrame >= frameCount) {
-			currentFrame = 0;
+		frameTicker++;
+		if (frameTicker >= fps) {
+			frameTicker = 0;
+			currentFrame++;
+			if (currentFrame >= frameCount) {
+				currentFrame = 0;
+			}
+			this.sourceRect.left	= currentFrame * getBitmapWidth();
+			this.sourceRect.right	= this.sourceRect.left + getBitmapWidth();
 		}
-		this.sourceRect.left	= currentFrame * getBitmapWidth();
-		this.sourceRect.right	= this.sourceRect.left + getBitmapWidth();
-	}
-
-	@Override
-	public void onDraw(Canvas canvas){
-		destinationRect = new Rect(getxPos(), getyPos(), getxPos() + getBitmapWidth(), getyPos() + getBitmapHeight());
-		canvas.drawBitmap(this.bitmap, this.sourceRect, destinationRect, null);
 	}
 	
 	@Override
@@ -54,7 +59,7 @@ public abstract class EntityPic extends Entity {
 	}
 	
 	public int getBitmapWidth() {
-		return bitmap.getWidth();
+		return bitmap.getWidth() / frameCount;
 	}
 	
 	public int getBitmapHeight() {

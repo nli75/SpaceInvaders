@@ -15,10 +15,10 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 	private Monster monster;
 	private Ship ship;
 	private LaserBeam laserBeam;
+	public static Bitmap laserbeamBitmap;
 	private GameThread gameThread;
 	public static int screenWidth;
 	public static int screenHeight;
-	public static int shipXPos;
 	public static Bitmap bg;
 
 	public Panel(Context c, int screenWidht, int screenHeight) {
@@ -30,16 +30,15 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		this.bg					= BitmapFactory.decodeResource(getResources(), R.drawable.bg);
 		Bitmap monsterBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
 		Bitmap shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
-		Bitmap laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
+		
+		ship			= new Ship(this.screenWidth/2, this.screenHeight-20, shipBitmap);
+		laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
 		int monsterXPos = 140;
 		for (int i = 0; i <= 5; i++) {
 			monster 	= new Monster(monsterXPos, 100, monsterBitmap);
 			monsterXPos += 30;
 		}
-		
-		ship			= new Ship(Panel.screenWidth/2, Panel.screenHeight-20, shipBitmap);
-		Panel.shipXPos	= ship.getCenterX();
-		laserBeam		= new LaserBeam(Panel.screenWidth/2, Panel.screenHeight-20, laserbeamBitmap);
+
 	}
 
 	@Override
@@ -50,7 +49,6 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		switch(eventAction) {
 			case MotionEvent.ACTION_MOVE:
 				ship.setCenterX(eventX);
-				Panel.shipXPos = ship.getCenterX();
 				break;
 		}
 		return true;
@@ -91,5 +89,4 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		
 	}
 	
-
 }

@@ -7,32 +7,32 @@ public class LaserBeam extends EntityPic {
 	int x;
 	int y;
 	int xMov = 0;
-	int yMov = -8;
+	int yMov = 0;
 	Bitmap bitmap;
+	Entity entity;
 	
-	public LaserBeam(int x, int y, Bitmap bitmap) {
+	public LaserBeam(int x, int y, Bitmap bitmap, Entity entity) {
 		super(x, y, bitmap, 1, 1);
 		this.x = x;
 		this.y = y;
 		this.bitmap = bitmap;
+		this.entity = entity;
 	}
 	
 	@Override
 	public void collision() {
-		setxPos(Panel.shipXPos);
-		setyPos(Panel.screenHeight-20);
 		SoundManager.INSTANCE.playSound(2);
+		EntityManager.INSTANCE.removeEntity(this);
+		EntityManager.INSTANCE.removeShipLaser(this);
 	}
 	
 	@Override
 	public void updatePosition(){
-		if (getyPos() < 0) {
-			setxPos(Panel.shipXPos);
-			setyPos(Panel.screenHeight-20);			
-		}else if(getyPos() ==  Panel.screenHeight -20){
-			SoundManager.INSTANCE.playSound(1);
-		}
 		movement(xMov, yMov);
+	}
+	
+	public void setYMov(int i) {
+		this.yMov = i;
 	}
 
 }
