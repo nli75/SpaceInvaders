@@ -30,7 +30,7 @@ public class LaserBeam extends EntityPic {
 		if (getyPos() < 0) {
 			setxPos(Panel.shipXPos);
 			setyPos(Panel.screenHeight-20);			
-		}else if(getyPos() ==  Panel.screenHeight-20){
+		}else if(getyPos() ==  Panel.screenHeight -20){
 			SoundManager.INSTANCE.playSound(1);
 		}
 		movement(xMov, yMov);

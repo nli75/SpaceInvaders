@@ -23,7 +23,8 @@ public final class R {
     }
     public static final class raw {
         public static final int dropping=0x7f040000;
-        public static final int ufo_laser=0x7f040001;
+        public static final int screem=0x7f040001;
+        public static final int ufo_laser=0x7f040002;
     }
     public static final class string {
         public static final int app_name=0x7f050001;

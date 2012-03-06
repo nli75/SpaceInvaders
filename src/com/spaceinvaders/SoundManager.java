@@ -31,7 +31,8 @@ public class SoundManager {
 	
 	public void loadSounds(){
 		soundPoolMap.put(1, soundPool.load(context, R.raw.ufo_laser, 1));
-		soundPoolMap.put(2, soundPool.load(context, R.raw.dropping, 1));
+		soundPoolMap.put(2, soundPool.load(context, R.raw.screem, 1));
+		
 		
 	}
 	
