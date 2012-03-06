@@ -21,7 +21,6 @@ public class LaserBeam extends EntityPic {
 	public void collision() {
 		setxPos(Panel.shipXPos);
 		setyPos(Panel.screenHeight-20);
-		ScoreManager.INSTANCE.addScore(1);
 		SoundManager.INSTANCE.playSound(2);
 	}
 	
