@@ -1,6 +1,7 @@
 package com.spaceinvaders;
 
 import android.graphics.Canvas;
+import android.graphics.Rect;
 
 public abstract class Entity {
 
@@ -16,6 +17,14 @@ public abstract class Entity {
 	public void movement(int deltaX, int deltaY) {
 		setxPos(getxPos() + deltaX);
 		setyPos(getyPos() + deltaY);
+	}
+	
+	public Rect getDestRect() {
+		return null;
+	}
+	
+	public void updateAnimation() {
+		
 	}
 	
 	public void updatePosition() {
