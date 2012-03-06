@@ -11,7 +11,7 @@ public class Monster extends EntityPic {
 	int interval = 0;
 	Bitmap bitmap;
 	int frameTicker = 1+(int)(100*Math.random());;
-	int fps			= 100;
+	int fps			= 130;
 	
 	public Monster(int x, int y, Bitmap bitmap) {
 		super(x,y, bitmap, 15, 2);
@@ -30,14 +30,16 @@ public class Monster extends EntityPic {
 	public void updatePosition() {
 		if (this.interval%70 == 0) {
 			xMov *= -1;
+			yMov = 10;
 		}
 		this.interval++;
 		movement(xMov, yMov);
+		yMov = 0;
 		
 		frameTicker++;
 		if (frameTicker >= fps) {
 			LaserBeam laser	= new LaserBeam(this.getCenterX(), this.getyPos()-10, Panel.laserbeamBitmap, this);
-			laser.setYMov(8);
+			laser.setYMov(5);
 			EntityManager.INSTANCE.addMonsterLaser(laser);
 			frameTicker = 0;
 		}

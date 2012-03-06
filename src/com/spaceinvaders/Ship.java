@@ -15,6 +15,11 @@ public class Ship extends EntityPic {
 	public void collision() {
 		EntityManager.INSTANCE.removeEntity(this);
 		SoundManager.INSTANCE.playSound(3);
+		
+		// Game restart
+		Panel.resetPanel();
+		Panel.populatePanel();
+		ScoreManager.INSTANCE.clearScore();
 	}
 	
 	@Override
@@ -23,7 +28,7 @@ public class Ship extends EntityPic {
 		if (frameTicker >= fps) {
 			SoundManager.INSTANCE.playSound(1);
 			LaserBeam laser	= new LaserBeam(this.getCenterX(), this.getyPos()-10, Panel.laserbeamBitmap, this);
-			laser.setYMov(-8);
+			laser.setYMov(-10);
 			EntityManager.INSTANCE.addShipLaser(laser);
 			frameTicker = 0;
 		}
