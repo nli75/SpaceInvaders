@@ -39,16 +39,21 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 	
 	public static void populatePanel() {
 		Panel.ship = new Ship(Panel.screenWidth/2, Panel.screenHeight-20, Panel.shipBitmap);
-		int monsterXPos = 140;
-		for (int i = 0; i <= 5; i++) {
-			monster 	= new Monster(monsterXPos, 100, monsterBitmap);
-			monsterXPos += 30;
+		makeMonsterRows(2);
+	}
+	
+	public static void makeMonsterRows(int monsterRows) {
+		monsterRows = (monsterRows - 1) * 30 + 100;						// rewrite later?
+		for (int yPos = 100; yPos <= monsterRows; yPos += 30) {
+			for (int xPos = 140; xPos <= 290; xPos += 30) {
+				monster = new Monster(xPos, yPos, monsterBitmap);
+			}
 		}
-		monsterXPos = 140;
-		for (int i = 0; i <= 5; i++) {
-			monster 	= new Monster(monsterXPos, 130, monsterBitmap);
-			monsterXPos += 30;
-		}
+//		monsterXPos = 140;
+//		for (int i = 0; i <= 5; i++) {
+//			monster 	= new Monster(monsterXPos, 130, monsterBitmap);
+//			monsterXPos += 30;
+//		}
 	}
 	
 	public static void resetPanel() {

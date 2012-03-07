@@ -16,7 +16,11 @@ public class CollisionManager {
 		CopyOnWriteArrayList<LaserBeam> shipLasers		= EntityManager.INSTANCE.getArrayListShipLasers();
 		CopyOnWriteArrayList<LaserBeam> monsterLasers	= EntityManager.INSTANCE.getArrayListMonsterLasers();
 		
+		int monstersLeft = 0;
 		for (Entity entity : entityArray) {
+			if (entity instanceof Monster) {
+				monstersLeft++;
+			}
 			if (entity instanceof Monster) {
 				for (LaserBeam laser : shipLasers) {
 					if (Rect.intersects(entity.getDestRect(), laser.getDestRect())) {
@@ -36,7 +40,10 @@ public class CollisionManager {
 				}
 			}
 		}
-		return false;
-		
+		if (monstersLeft == 0) {
+			Panel.makeMonsterRows(2);
+		}
+		return false;	
 	}
+	
 }

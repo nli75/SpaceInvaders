@@ -28,7 +28,7 @@ public class Ship extends EntityPic {
 		if (frameTicker >= fps) {
 			SoundManager.INSTANCE.playSound(1);
 			LaserBeam laser	= new LaserBeam(this.getCenterX(), this.getyPos()-10, Panel.laserbeamBitmap, this);
-			laser.setYMov(-10);
+			laser.setYMov(-15);
 			EntityManager.INSTANCE.addShipLaser(laser);
 			frameTicker = 0;
 		}

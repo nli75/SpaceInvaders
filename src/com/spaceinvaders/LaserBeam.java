@@ -21,7 +21,6 @@ public class LaserBeam extends EntityPic {
 	
 	@Override
 	public void collision() {
-		SoundManager.INSTANCE.playSound(2);
 		EntityManager.INSTANCE.removeEntity(this);
 		EntityManager.INSTANCE.removeShipLaser(this);
 	}
