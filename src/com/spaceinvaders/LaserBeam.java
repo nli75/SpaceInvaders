@@ -1,9 +1,11 @@
 package com.spaceinvaders;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 
 public class LaserBeam extends EntityPic {
 
+	private static final String TAG = null;
 	int x;
 	int y;
 	int xMov = 0;
@@ -28,12 +30,18 @@ public class LaserBeam extends EntityPic {
 	@Override
 	public void updatePosition(){
 		movement(xMov, yMov);
-		if(this.y == 40 || this.y == Panel.screenHeight){	
-			if(EntityManager.INSTANCE.getArrayListMonsterLasers().equals(this)){
-				EntityManager.INSTANCE.removeMonsterLaser(this);
-			}else{
-				EntityManager.INSTANCE.removeShipLaser(this);	
-			}		
+		if(this.getyPos()+this.getBitmapHeight() <= 0 || this.getyPos() >= Panel.screenHeight) {
+//			
+//			Borde inte fungera eftersom "this.laser" objektet liknar (equals) både den i monster arrayen liksom
+//			den i ship arrayen. Antar du ville ha en this.laser.finnsI(array) liknande funktion? Vi kollar sen :)
+//
+//			if(EntityManager.INSTANCE.getArrayListMonsterLasers().get(1).equals(this)) {
+//				Log.v(TAG, "monster laser");
+//				EntityManager.INSTANCE.removeMonsterLaser(this);
+//			}else{
+//				Log.v(TAG, "ship laser");
+//				EntityManager.INSTANCE.removeShipLaser(this);	
+//			}		
 		}
 	}
 	
