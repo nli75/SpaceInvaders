@@ -29,6 +29,13 @@ public class LaserBeam extends EntityPic {
 	@Override
 	public void updatePosition(){
 		movement(xMov, yMov);
+		if(this.y == 40 || this.y == Panel.screenHeight){	
+			if(EntityManager.INSTANCE.getArrayListMonsterLasers().equals(this)){
+				EntityManager.INSTANCE.removeMonsterLaser(this);
+			}else{
+				EntityManager.INSTANCE.removeShipLaser(this);	
+			}		
+		}
 	}
 	
 	public void setYMov(int i) {
