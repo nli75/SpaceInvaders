@@ -12,14 +12,16 @@ import android.view.SurfaceView;
 
 public class Panel extends SurfaceView implements SurfaceHolder.Callback, SensorEventListener {
 
-	private Monster monster;
-	private Ship ship;
-	private LaserBeam laserBeam;
+	public static Monster monster;
+	public static Ship ship;
+	public static LaserBeam laserBeam;
 	public static Bitmap laserbeamBitmap;
-	private GameThread gameThread;
+	public static Bitmap monsterBitmap;
+	public static Bitmap shipBitmap;
 	public static int screenWidth;
 	public static int screenHeight;
 	public static Bitmap bg;
+	private GameThread gameThread;
 
 	public Panel(Context c, int screenWidht, int screenHeight) {
 		super(c);
@@ -27,18 +29,32 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		Panel.screenWidth	= screenWidht;
 		Panel.screenHeight	= screenHeight;
 		
-		Panel.bg					= BitmapFactory.decodeResource(getResources(), R.drawable.bg);
-		Bitmap monsterBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
-		Bitmap shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
+		Panel.bg				= BitmapFactory.decodeResource(getResources(), R.drawable.bg);
+		Panel.monsterBitmap		= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
+		Panel.shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
+		Panel.laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
 		
-		ship			= new Ship(Panel.screenWidth/2, Panel.screenHeight-20, shipBitmap);
-		laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
+		populatePanel();
+	}
+	
+	public static void populatePanel() {
+		Panel.ship = new Ship(Panel.screenWidth/2, Panel.screenHeight-20, Panel.shipBitmap);
 		int monsterXPos = 140;
 		for (int i = 0; i <= 5; i++) {
 			monster 	= new Monster(monsterXPos, 100, monsterBitmap);
 			monsterXPos += 30;
 		}
-
+		monsterXPos = 140;
+		for (int i = 0; i <= 5; i++) {
+			monster 	= new Monster(monsterXPos, 130, monsterBitmap);
+			monsterXPos += 30;
+		}
+	}
+	
+	public static void resetPanel() {
+		EntityManager.INSTANCE.getArrayListEntity().clear();
+		EntityManager.INSTANCE.getArrayListMonsterLasers().clear();
+		EntityManager.INSTANCE.getArrayListShipLasers().clear();
 	}
 
 	@Override

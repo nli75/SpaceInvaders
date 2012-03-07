@@ -32,5 +32,9 @@ public class ScoreManager {
 	public void addScore(int amount) {
 		score += amount;
 	}
+	
+	public void clearScore() {
+		score = 0;
+	}
 
 }
