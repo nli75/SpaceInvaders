@@ -21,7 +21,7 @@ public class CollisionManager {
 			if (entity instanceof Monster) {
 				monstersLeft++;
 			}
-			if (entity instanceof Monster) {
+			if (entity instanceof Monster || entity instanceof Boss) {
 				for (LaserBeam laser : shipLasers) {
 					if (Rect.intersects(entity.getDestRect(), laser.getDestRect())) {
 						entity.collision();
@@ -39,6 +39,7 @@ public class CollisionManager {
 					}
 				}
 			}
+			
 		}
 		if (monstersLeft == 0) {
 			Panel.makeMonsterRows(2);

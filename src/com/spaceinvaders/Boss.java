@@ -11,7 +11,7 @@ public class Boss extends EntityPic {
 	int fps			= 100 + 1+(int)(30*Math.random());
 	
 	public Boss(int x, int y, Bitmap bitmap) {
-		super(x,y, bitmap, 15, 2);
+		super(x,y, bitmap, 1, 1);
 		this.bitmap = bitmap;
 	}
 	
