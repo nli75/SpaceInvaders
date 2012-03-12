@@ -13,6 +13,7 @@ import android.view.SurfaceView;
 public class Panel extends SurfaceView implements SurfaceHolder.Callback, SensorEventListener {
 
 	public static Monster monster;
+	public static Boss boss;
 	public static Ship ship;
 	public static LaserBeam laserBeam;
 	public static Bitmap laserbeamBitmap;
@@ -31,6 +32,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		
 		Panel.bg				= BitmapFactory.decodeResource(getResources(), R.drawable.bg);
 		Panel.monsterBitmap		= BitmapFactory.decodeResource(getResources(), R.drawable.monster);
+		Panel.bossBitmap		= BitmapFactory.decodeResource(getResources(), R.drawable.boss);
 		Panel.shipBitmap 		= BitmapFactory.decodeResource(getResources(), R.drawable.ship);
 		Panel.laserbeamBitmap	= BitmapFactory.decodeResource(getResources(), R.drawable.laserbeam);
 		
@@ -43,17 +45,14 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 	}
 	
 	public static void makeMonsterRows(int monsterRows) {
-		monsterRows = (monsterRows - 1) * 30 + 100;						// rewrite later?
+		boss = new Boss(-100, 60, bossBitmap);
+		monsterRows = (monsterRows - 1) * 30 + 100;
 		for (int yPos = 100; yPos <= monsterRows; yPos += 30) {
 			for (int xPos = 140; xPos <= 290; xPos += 30) {
 				monster = new Monster(xPos, yPos, monsterBitmap);
 			}
 		}
-//		monsterXPos = 140;
-//		for (int i = 0; i <= 5; i++) {
-//			monster 	= new Monster(monsterXPos, 130, monsterBitmap);
-//			monsterXPos += 30;
-//		}
+
 	}
 	
 	public static void resetPanel() {

@@ -11,7 +11,7 @@ public class Welcome extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		Log.v("in welcome", "not launching?");
-		setContentView(R.drawable.laserbeam);
+		setContentView(R.drawable.ic_launcher);
 	}	
 	
 
