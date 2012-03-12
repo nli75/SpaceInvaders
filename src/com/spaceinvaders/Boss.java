@@ -31,7 +31,6 @@ public class Boss extends EntityPic {
 			xMov *= -1;
 		}
 		movement(xMov, yMov);
-		
 		frameTicker++;
 		if (frameTicker >= fps) {
 			LaserBeam laser	= new LaserBeam(this.getCenterX(), this.getyPos()-10, Panel.laserbeamBitmap, this);
