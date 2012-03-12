@@ -46,7 +46,8 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 	}
 	
 	public static void makeMonsterRows(int monsterRows) {
-		boss = new Boss(10, 60, bossBitmap);
+
+		boss = new Boss(-500, 80, bossBitmap);
 		monsterRows = (monsterRows - 1) * 30 + 100;
 		for (int yPos = 100; yPos <= monsterRows; yPos += 30) {
 			for (int xPos = 140; xPos <= 290; xPos += 30) {

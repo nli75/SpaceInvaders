@@ -25,10 +25,10 @@ public class Boss extends EntityPic {
 	@Override
 	public void updatePosition() {
 		if (this.getxPos() + this.getBitmapWidth() >= Panel.screenWidth) {
-			xMov *= -1;
+			xMov = -2;
 		}
 		if(this.getxPos() <= 0){
-			xMov *= -1;
+			xMov = 2;
 		}
 		movement(xMov, yMov);
 		
