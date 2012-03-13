@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 public class Ship extends EntityPic {
 	
 	int frameTicker = 0;
-	int fps			= 100;
+	int fps			= 80;
 
 	public Ship(int x, int y, Bitmap bitmap) {
 		super(x, y, bitmap, 1, 1);
@@ -17,9 +17,6 @@ public class Ship extends EntityPic {
 		SoundManager.INSTANCE.playSound(3);
 		
 		// Game Over
-//		Panel.resetPanel();
-//		Panel.populatePanel();
-//		ScoreManager.INSTANCE.clearScore();
 		Panel.gameOver();
 	}
 	
