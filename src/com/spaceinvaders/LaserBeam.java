@@ -1,12 +1,11 @@
 package com.spaceinvaders;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 public class LaserBeam extends EntityPic {
 
-	private static final String TAG = null;
-	private static final String TAG2 = null;
+	public static final String TAG = null;
+	public static final String TAG2 = null;
 	int x;
 	int y;
 	int xMov = 0;
