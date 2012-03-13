@@ -52,7 +52,10 @@ public class SpaceInvadersActivity extends Activity {
     }
     
     public static void gameOver(){
+    	Bundle message = new Bundle();
+    	message.putString("string", "Game Over");
     	gameFinish = new Intent(activity, Welcome.class);
+    	gameFinish.putExtras(message);
     	activity.startActivity(gameFinish);
     	activity.finish();//stäng denna activity eftersom vi går över
     }
