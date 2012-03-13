@@ -61,6 +61,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 		EntityManager.INSTANCE.getArrayListEntity().clear();
 		EntityManager.INSTANCE.getArrayListMonsterLasers().clear();
 		EntityManager.INSTANCE.getArrayListShipLasers().clear();
+		SpaceInvadersActivity.gameOver();
 	}
 
 	@Override

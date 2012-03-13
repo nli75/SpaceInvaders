@@ -35,19 +35,21 @@ public class GameThread extends Thread {
 			try {
 				canvas = this.surfaceHolder.lockCanvas(null);
 				synchronized (surfaceHolder) {
-					beginTime = System.currentTimeMillis();
-					
-				    canvas.drawColor(Color.BLACK);
-				    canvas.drawBitmap(Panel.bg, 10, 10, null);
-					EntityManager.INSTANCE.drawEntities(canvas);
-					CollisionManager.INSTANCE.collision();
-					ScoreManager.INSTANCE.updateScore(canvas);
-					
-					timeDiff = System.currentTimeMillis() - beginTime;
-					sleepTime = (int)(FRAME_PERIOD - timeDiff);
-					while (sleepTime <= 0 && FRAMES_SKIPPED < MAX_FRAMES_SKIPPED) {
-						sleepTime += FRAME_PERIOD;
-						FRAMES_SKIPPED++;
+					if(canvas != null){
+						beginTime = System.currentTimeMillis();
+						
+					    canvas.drawColor(Color.BLACK);
+					    canvas.drawBitmap(Panel.bg, 10, 10, null);
+						EntityManager.INSTANCE.drawEntities(canvas);
+						CollisionManager.INSTANCE.collision();
+						ScoreManager.INSTANCE.updateScore(canvas);
+						
+						timeDiff = System.currentTimeMillis() - beginTime;
+						sleepTime = (int)(FRAME_PERIOD - timeDiff);
+						while (sleepTime <= 0 && FRAMES_SKIPPED < MAX_FRAMES_SKIPPED) {
+							sleepTime += FRAME_PERIOD;
+							FRAMES_SKIPPED++;
+						}
 					}
 				}
 			}

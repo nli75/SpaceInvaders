@@ -2,6 +2,7 @@ package com.spaceinvaders;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -9,7 +10,9 @@ import android.os.Bundle;
 import android.view.Display;
 
 public class SpaceInvadersActivity extends Activity {
-    /** Called when the activity is first created. */
+    private static Intent gameFinish;
+	public static Activity activity;
+	/** Called when the activity is first created. */
 	private Panel panel;
 	private SensorManager sensormanager;
 	
@@ -22,7 +25,7 @@ public class SpaceInvadersActivity extends Activity {
         display.getSize(size);
         int screenWidht = size.x;
         int screenHeight = size.y;
-        
+        activity = this;
         panel = new Panel(this, screenWidht, screenHeight);
         setContentView(panel);
     }
@@ -46,6 +49,12 @@ public class SpaceInvadersActivity extends Activity {
     public void onPause(){
     	super.onPause();
     	sensormanager.unregisterListener(panel);
+    }
+    
+    public static void gameOver(){
+    	gameFinish = new Intent(activity, Welcome.class);
+    	activity.startActivity(gameFinish);
+    	activity.finish();//stäng denna activity eftersom vi går över
     }
     
     @Override
