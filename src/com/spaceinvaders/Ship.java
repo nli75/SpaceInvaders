@@ -16,10 +16,11 @@ public class Ship extends EntityPic {
 		EntityManager.INSTANCE.removeEntity(this);
 		SoundManager.INSTANCE.playSound(3);
 		
-		// Game restart
-		Panel.resetPanel();
-		Panel.populatePanel();
-		ScoreManager.INSTANCE.clearScore();
+		// Game Over
+//		Panel.resetPanel();
+//		Panel.populatePanel();
+//		ScoreManager.INSTANCE.clearScore();
+		Panel.gameOver();
 	}
 	
 	@Override

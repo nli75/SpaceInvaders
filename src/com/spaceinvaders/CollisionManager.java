@@ -6,6 +6,7 @@ import android.graphics.Rect;
 public class CollisionManager {
 	
 	public static final CollisionManager INSTANCE = new CollisionManager();
+	public boolean alive = true;
 	
 	public CollisionManager() {
 		
@@ -35,13 +36,13 @@ public class CollisionManager {
 					if (Rect.intersects(entity.getDestRect(), laser.getDestRect())) {
 						entity.collision();
 						laser.collision();
+						alive = false;
 						return true;
 					}
 				}
 			}
-			
 		}
-		if (monstersLeft == 0) {
+		if (alive && monstersLeft == 0) {
 			Panel.makeMonsterRows(2);
 		}
 		return false;	

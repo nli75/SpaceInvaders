@@ -46,7 +46,6 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 	}
 	
 	public static void makeMonsterRows(int monsterRows) {
-
 		boss = new Boss(-500, 80, bossBitmap);
 		monsterRows = (monsterRows - 1) * 30 + 100;
 		for (int yPos = 100; yPos <= monsterRows; yPos += 30) {
@@ -54,16 +53,20 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback, Sensor
 				monster = new Monster(xPos, yPos, monsterBitmap);
 			}
 		}
-
 	}
 	
-	public static void resetPanel() {
-		EntityManager.INSTANCE.getArrayListEntity().clear();
-		EntityManager.INSTANCE.getArrayListMonsterLasers().clear();
-		EntityManager.INSTANCE.getArrayListShipLasers().clear();
+	public static void gameOver() {
+		resetPanel();
 		SpaceInvadersActivity.gameOver();
 	}
 
+	public static void resetPanel() {
+		ScoreManager.INSTANCE.clearScore();
+		EntityManager.INSTANCE.getArrayListEntity().clear();
+		EntityManager.INSTANCE.getArrayListMonsterLasers().clear();
+		EntityManager.INSTANCE.getArrayListShipLasers().clear();
+	}
+	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		int eventX = (int) event.getX();
