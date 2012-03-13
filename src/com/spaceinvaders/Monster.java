@@ -41,12 +41,10 @@ public class Monster extends EntityPic {
 			frameTicker = 0;
 		}
 		
-		// Game restart
+		// Game Over
 		if (this.getyPos()+this.getBitmapHeight() >= Panel.screenHeight) {
-			Panel.resetPanel();
-			Panel.populatePanel();
-			ScoreManager.INSTANCE.clearScore();
 			SoundManager.INSTANCE.playSound(3);
+			Panel.gameOver();
 		}
 	}
 
