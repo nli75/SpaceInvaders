@@ -6,7 +6,7 @@ import android.graphics.Rect;
 public class CollisionManager {
 	
 	public static final CollisionManager INSTANCE = new CollisionManager();
-	public boolean alive = true;
+	private Ship ship;
 	
 	public CollisionManager() {
 		
@@ -19,9 +19,6 @@ public class CollisionManager {
 		
 		int monstersLeft = 0;
 		for (Entity entity : entityArray) {
-			if (entity instanceof Monster) {
-				monstersLeft++;
-			}
 			if (entity instanceof Monster || entity instanceof Boss) {
 				for (LaserBeam laser : shipLasers) {
 					if (Rect.intersects(entity.getDestRect(), laser.getDestRect())) {
@@ -30,22 +27,23 @@ public class CollisionManager {
 						return true;
 					}
 				}
+				monstersLeft++;
 			}
 			if (entity instanceof Ship) {
 				for (LaserBeam laser : monsterLasers) {
 					if (Rect.intersects(entity.getDestRect(), laser.getDestRect())) {
 						entity.collision();
 						laser.collision();
-						alive = false;
 						return true;
 					}
 				}
+				ship = (Ship) entity;
 			}
 		}
-		if (alive && monstersLeft == 0) {
+		if (entityArray.contains(ship) && monstersLeft == 0) {
 			Panel.makeMonsterRows(2);
 		}
-		return false;	
+		return false;
 	}
 	
 }
