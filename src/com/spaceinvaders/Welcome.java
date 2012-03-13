@@ -35,7 +35,7 @@ public class Welcome extends Activity {
 			public void onClick(View v) {
 				gameFinish = new Intent(activity, SpaceInvadersActivity.class);
 		    	activity.startActivity(gameFinish);
-		    	activity.finish();				
+		    	activity.finish();
 			}
 		});
 		
