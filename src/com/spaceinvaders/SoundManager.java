@@ -2,9 +2,6 @@ package com.spaceinvaders;
 
 
 import java.util.HashMap;
-
-import org.apache.commons.logging.Log;
-
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.SoundPool;
